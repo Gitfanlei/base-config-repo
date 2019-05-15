@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: config
+
+
+# 建立远程仓库 用于访问配置文件 并获取配置文件中的值  当本地与配置中心的配置文件相同时，系统默认优先使用配置管理中心所提供的配置
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Gitfanlei/base-config-repo.git
+          username: 819495591@qq.com
+          password: fanlei1994812
+          search-paths: base-config-repo
+
+  #  此处一定要根据rabbitmq主页上的listening ports 来填写监听端口，并且不需要加前缀 amqp 或者 http 高版本tomcat可以自动解析，否则会出现socket close 或者 无法解析前缀等问题
+  rabbitmq:
+    addresses: localhost:5672
+    username: fanlei
+    password: fanlei
+    publisher-confirms: true
+    publisher-returns: true
+    virtual-host: /
